@@ -1,0 +1,16 @@
+[user]
+	name = josfam
+	email = josephamukun@tutanota.com
+[core]
+	editor = vim
+	autocrlf = false
+[init]
+	defaultBranch = main
+[alias]
+    st = status
+    cm = commit
+    all = !git add . && git status
+	pall = !git add . && git commit && git push
+	pushadd = !git commit && git push
+    cmall = !git add . && git commit
+    line = !git log --oneline
