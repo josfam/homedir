@@ -29,6 +29,17 @@ echo "Setting up an SSH key DONE\!<<<<<<<<<<"
 echo "                 ====================="
 echo ""
 
+### zsh
+echo ">>>>>>>>>> Setting up zsh and Oh-my-zsh"
+echo "           ============================"
+sudo apt install -y zsh
+
+### oh-my-zsh
+sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+echo "Setting up zsh and Oh-my-zsh DONE\!<<<<<<<<<<"
+echo "                 ============================"
+
+
 ### other utils
 echo ">>>>>>>>>> Setting up other utils"
 echo "           ======================"
@@ -121,18 +132,6 @@ sudo apt install -y vlc \
 		 obs-studio
 echo "Setting up multimedia DONE\!<<<<<<<<<<"
 echo "             ========================="
-
-######################### TERMINAL UTILS #########################
-
-### zsh
-echo ">>>>>>>>>> Setting up zsh and Oh-my-zsh"
-echo "           ============================"
-sudo apt install -y zsh
-
-### oh-my-zsh
-sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-echo "Setting up zsh and Oh-my-zsh DONE\!<<<<<<<<<<"
-echo "                 ============================"
 
 
 ######################### FOLDERS #########################
