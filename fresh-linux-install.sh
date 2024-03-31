@@ -6,7 +6,7 @@ sudo apt update && sudo apt upgrade -y
 ######################### UTILS #########################
 
 ### git
-echo "\n"
+echo ""
 echo ">>>>>>>>>> Setting up git"
 echo "           =============="
 sudo apt install -y git
@@ -20,14 +20,14 @@ git config --global core.editor vim
 
 echo "Setting up git DONE\!<<<<<<<<<<"
 echo "                 =============="
-echo "\n"
+echo ""
 
 echo ">>>>>>>>>> Setting up an SSH key"
 echo "           ====================="
 ssh-keygen -f "$HOME/.ssh/id_rsa" -N '' -y
 echo "Setting up an SSH key DONE\!<<<<<<<<<<"
 echo "                 ====================="
-echo "\n"
+echo ""
 
 ### other utils
 echo ">>>>>>>>>> Setting up other utils"
@@ -37,7 +37,7 @@ sudo apt install -y vim \
 		 timeshift
 echo "Setting up other utils DONE\!<<<<<<<<<<"
 echo "                 ======================"
-echo "\n"
+echo ""
 
 ######################### DEVELOPMENT TOOLS #########################
 
@@ -47,7 +47,7 @@ sudo apt install -y build-essential
 sudo apt cmake
 echo "Setting up core dev packages DONE\!<<<<<<<<<<"
 echo "                 ============================"
-echo "\n"
+echo ""
 
 ### dependencies for building python from source later
 echo ">>>>>>>>>> Setting up python dependencies"
@@ -69,7 +69,7 @@ sudo apt install -y \
 		 zlib1g-dev
 echo "Setting up python dependencies DONE\!<<<<<<<<<<"
 echo "                  =============================="
-echo "\n"
+echo ""
 
 ######################### BROWSERS #########################
 
@@ -85,7 +85,7 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install -y ./google-chrome-stable_current_amd64.deb
 echo "Setting up Browsers DONE\!<<<<<<<<<<"
 echo "                  =================="
-echo "\n"
+echo ""
 
 
 ######################### MESSAGING #########################
