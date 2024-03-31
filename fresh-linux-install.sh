@@ -5,9 +5,23 @@ sudo apt update && sudo apt upgrade -y
 
 ######################### UTILS #########################
 
-sudo apt install -y git \
+### git
+sudo apt install -y git
+
+echo "Setting up git config file..."
+echo "============================="
+echo -n "Enter your GitHub username: "; read gitHubUserName;
+echo -n "Enter your GitHub email: "; read gitHubEmail;
+git config --global user.name $gitHubUserName
+git config --global user.email $gitHubEmail
+git config --global init.defaultBranch main
+git config --global core.editor vim
+
+### other utils
+sudo apt install -y vim \
 		 curl \
 		 timeshift
+
 
 ######################### DEVELOPMENT TOOLS #########################
 
