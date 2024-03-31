@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-
+echo -n "Press any key to populate your fresh linux installation: "; read;
 sudo apt update && sudo apt upgrade -y
 
 
