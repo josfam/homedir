@@ -32,15 +32,6 @@ sudo apt install -y \
 		 zlib1g-dev
 
 
-######################### TERMINAL UTILS #########################
-
-### zsh
-sudo apt install -y zsh
-
-### oh-my-zsh
-sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-
-
 ######################### BROWSERS #########################
 
 ### Brave Browser
@@ -78,3 +69,12 @@ sudo apt update && sudo apt install -y signal-desktop
 sudo apt install -y vlc \
 		 ffmpeg \
 		 obs-studio
+
+
+######################### TERMINAL UTILS #########################
+
+### zsh
+sudo apt install -y zsh
+
+### oh-my-zsh
+sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
