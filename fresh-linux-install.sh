@@ -7,7 +7,7 @@ sudo apt update && sudo apt upgrade -y
 
 sudo apt install -y git \
 		 curl \
-
+		 timeshift
 
 ######################### DEVELOPMENT TOOLS #########################
 
@@ -32,7 +32,7 @@ sudo apt install -y \
 		 zlib1g-dev
 
 
-######################### ZSH AND OH-MY-ZSH #########################
+######################### TERMINAL UTILS #########################
 
 ### zsh
 sudo apt install -y zsh
@@ -73,5 +73,8 @@ sudo apt update && sudo apt install -y signal-desktop
 
 ######################### MULTIMEDIA #########################
 
-# vlc
-sudo apt install -y vlc
+### standard
+
+sudo apt install -y vlc \
+		 ffmpeg \
+		 obs-studio
