@@ -6,10 +6,11 @@ sudo apt update && sudo apt upgrade -y
 ######################### UTILS #########################
 
 ### git
+echo "\n"
+echo ">>>>>>>>>> Setting up git"
+echo "           =============="
 sudo apt install -y git
 
-echo "Setting up git config file..."
-echo "============================="
 echo -n "Enter your GitHub username: "; read gitHubUserName;
 echo -n "Enter your GitHub email: "; read gitHubEmail;
 git config --global user.name $gitHubUserName
@@ -17,11 +18,26 @@ git config --global user.email $gitHubEmail
 git config --global init.defaultBranch main
 git config --global core.editor vim
 
+echo "Setting up git DONE\!<<<<<<<<<<"
+echo "=============="
+echo "\n"
+
+echo ">>>>>>>>>> Setting up an SSH key"
+echo "           ====================="
+ssh-keygen -f "$HOME/.ssh/id_rsa" -N '' -y
+echo "Setting up an SSH key DONE\!<<<<<<<<<<"
+echo "====================="
+echo "\n"
+
 ### other utils
+echo ">>>>>>>>>> Setting up other utils"
+echo "           ======================"
 sudo apt install -y vim \
 		 curl \
 		 timeshift
-
+echo "Setting up other utils DONE\!<<<<<<<<<<"
+echo "======================"
+echo "\n"
 
 ######################### DEVELOPMENT TOOLS #########################
 
