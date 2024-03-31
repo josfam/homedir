@@ -19,14 +19,14 @@ git config --global init.defaultBranch main
 git config --global core.editor vim
 
 echo "Setting up git DONE\!<<<<<<<<<<"
-echo "=============="
+echo "                 =============="
 echo "\n"
 
 echo ">>>>>>>>>> Setting up an SSH key"
 echo "           ====================="
 ssh-keygen -f "$HOME/.ssh/id_rsa" -N '' -y
 echo "Setting up an SSH key DONE\!<<<<<<<<<<"
-echo "====================="
+echo "                 ====================="
 echo "\n"
 
 ### other utils
@@ -36,15 +36,22 @@ sudo apt install -y vim \
 		 curl \
 		 timeshift
 echo "Setting up other utils DONE\!<<<<<<<<<<"
-echo "======================"
+echo "                 ======================"
 echo "\n"
 
 ######################### DEVELOPMENT TOOLS #########################
 
+echo ">>>>>>>>>> Setting up core dev packages"
+echo "           ============================"
 sudo apt install -y build-essential
 sudo apt cmake
+echo "Setting up core dev packages DONE\!<<<<<<<<<<"
+echo "                 ============================"
+echo "\n"
 
 ### dependencies for building python from source later
+echo ">>>>>>>>>> Setting up python dependencies"
+echo "           =============================="
 sudo apt install -y \
 		 pkg-config \
 		 python3-tk \
@@ -60,10 +67,14 @@ sudo apt install -y \
 		 libssl-dev \
 		 tk-dev \
 		 zlib1g-dev
-
+echo "Setting up python dependencies DONE\!<<<<<<<<<<"
+echo "                  =============================="
+echo "\n"
 
 ######################### BROWSERS #########################
 
+echo ">>>>>>>>>> Setting up Browsers"
+echo "           ==================="
 ### Brave Browser
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
@@ -72,9 +83,15 @@ sudo apt update && sudo apt install brave-browser
 # Chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install -y ./google-chrome-stable_current_amd64.deb
+echo "Setting up Browsers DONE\!<<<<<<<<<<"
+echo "                  =================="
+echo "\n"
+
 
 ######################### MESSAGING #########################
 
+echo ">>>>>>>>>> Setting up Messaging apps"
+echo "           ========================="
 ### Signal Desktop
 
 # NOTE: These instructions only work for 64-bit Debian-based
@@ -90,21 +107,52 @@ echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] 
 
 # 3. Update your package database and install Signal:
 sudo apt update && sudo apt install -y signal-desktop
+echo "Setting up Messaging apps DONE\!<<<<<<<<<<"
+echo "                 ========================="
 
 
 ######################### MULTIMEDIA #########################
 
 ### standard
-
+echo ">>>>>>>>>> Setting up multimedia"
+echo "           ====================="
 sudo apt install -y vlc \
 		 ffmpeg \
 		 obs-studio
-
+echo "Setting up multimedia DONE\!<<<<<<<<<<"
+echo "             ========================="
 
 ######################### TERMINAL UTILS #########################
 
 ### zsh
+echo ">>>>>>>>>> Setting up zsh and Oh-my-zsh"
+echo "           ============================"
 sudo apt install -y zsh
 
 ### oh-my-zsh
 sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+echo "Setting up zsh and Oh-my-zsh DONE\!<<<<<<<<<<"
+echo "                 ============================"
+
+
+######################### FOLDERS #########################
+
+echo ">>>>>>>>>> Setting up folders"
+echo "           =================="
+cd ~
+mkdir my-repos my-scripts other-repos programs
+echo "Setting up folders DONE\!<<<<<<<<<<"
+echo "       ============================"
+
+
+######################### APP IMAGES TO GET AFTERWARDS #########################
+
+echo 'install these too:
+- Obsidian : https://obsidian.md/
+- KeepassXC: https://keepassxc.org/download/#linux
+- qBittorrent (for linux isos): https://www.qbittorrent.org/download
+'
+
+echo 'build these from source:
+- python3 - https://www.python.org/downloads/
+'
