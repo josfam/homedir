@@ -3,12 +3,12 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="bira"
+# ZSH_THEME="anon_custom"
+ZSH_THEME="frontcube"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -106,18 +106,20 @@ source $ZSH/oh-my-zsh.sh
 export PYTHONDONTWRITEBYTECODE=PLEASE
 
 # my_scripts
-export PATH="$PATH:$HOME/programs/my_scripts"
-export PATH="$PATH:$HOME/my_repos/automatons"
+export PATH="$PATH:$HOME/programs/my-scripts"
+export PATH="$PATH:$HOME/ALX/simple_shell/dev-scripts"
+export PATH="$PATH:$HOME/my-repos/automatons"
 
 # .local/bin
 export PATH="$PATH:$HOME/.local/bin"
 
 # programs
 export PATH="$PATH:$HOME/programs"
+export PATH="$PATH:$HOME/programs/waterfox"
 
 # git aliases
-alias pall="git pall"
-alias padd="git padd"
+alias pall="git add . && git commit && git push"
+alias padd="git commit && git push"
 alias rebase="git rebase -i"
 alias rebaselast="git rebase -i HEAD~1"
 alias stash="git stash"
@@ -130,13 +132,24 @@ alias st="git status"
 alias mainswitch="git checkout main"
 alias branches="git branch -a | cat"
 alias line="git log --oneline | less"
+alias log="git log"
 alias add="git add"
 alias clone="git clone"
 alias unstage="git restore --staged"
+alias cmt="git commit"
+alias branchit="git checkout -b"
+alias unadd="git restore --staged"
+alias reseth="git reset --hard"
+alias pushf="git push -f"
+alias debranchhere="git branch -d"
+alias debranchweb="git push -d origin"
+alias checkit="git checkout"
+alias streamit="git push --set-upstream origin"
+alias add.="git add . && git status"
 
 # zshell aliases
-alias zshload="source ~/.zshrc"
-alias zshedit="vim ~/.zshrc"
+alias zload="source ~/.zshrc"
+alias zedit="vim ~/.zshrc"
 
 # program aliases
 alias pyst="pycodestyle"
@@ -144,17 +157,76 @@ alias pysc=",pyscript"
 alias py="python3"
 alias pymod="python3 -m"
 alias pycode="python3 -c"
-alias blackall="black -S -l 79 */*.py && black -S -l 79 *.py"
-alias pystall="pycodestyle */*.py && pycodestyle *.py"
 alias flame="flameshot gui"
 alias cmp=",compile"
 alias list="ls -alh"
 alias v="vim"
+alias vpn="protonvpn-cli c"
+alias unvpn="protonvpn-cli d"
+alias sqlcheck="systemctl status"
+alias sqllogin="sudo mysql --auto-rehash -u root"
+alias sqlrestart="sudo systemctl restart mysql"
+alias sqlstop="sudo systemctl stop mysql"
+alias sqlstart="sudo systemctl start mysql"
+alias ch="touch"
+alias vimedit="vim ~/.vimrc"
+alias kl="sudo kill"
+alias cl="clear"
+alias fontreset="fc-cache -vf"
+alias k="clear"
+alias out="./a.out"
+alias sd="sudo"
+alias update="sudo apt update"
+alias upgrade="sudo apt-get upgrade"
+alias updateupgrade="sudo apt update && sudo apt upgrade"
+alias water="~/programs/waterfox"
+alias bpy="bpython"
 
 # cd aliases
+alias repos="cd ~/my-repos/"
 alias zshthemes="cd $HOME/.oh-my-zsh/themes"
 alias home="cd ~"
+alias chinazasessions="cd $HOME/my-repos/chinaza-sessions"
 
 # ALX program aliases
-alias bty="betty *.c && betty *.h"
+alias chinazashell="cd ~/my_repos/chinaza-sessions/simple_shell/"
+alias almostcircle="cd ~/my_repos/alx-higher_level_programming/0x0C-python-almost_a_circle"
+alias sortingalgos="cd ~/my_repos/sorting_algorithms"
+alias testalmostcircle="python3 -m unittest discover tests"
+alias bnb="cd ~/my_repos/AirBnB_clone"
+alias testall="python3 -m unittest discover tests"
+alias histedit="vim ~/.zsh_history"
+alias w3val="$HOME/programs/W3C-Validator/w3c_validator.py"
+alias trees="cd $HOME/my-repos/binary_trees"
 
+# Other people's github programs
+export PATH="$PATH:$HOME/other-repos/gifski/target/release"
+
+# ========== FUNCTIONS ==========
+# run black on all python files in the current location
+blackthem() {
+    black -S -l 79 $(find . -type f -name '*.py')
+}
+
+# pycodestyle
+pystthem() {
+	pycodestyle --show-pep8 --show-source $(find . -name '*.py')
+}
+
+# make all python files executable
+mkexecallpy() {
+	sudo chmod +x $(find . -type f -name "*.py")
+}
+
+# validate all html and css files with Holberton's W3C-Validator
+w3all() {
+	w3val $(find . -type f \( -name "*.html" -o -name "*.css" \))
+}
+
+# Run betty on all c files and header files in the directory, except c files with
+# the naming convention, *-main.c
+bty() {
+	betty $(find . -type f \( -name "*.c" ! -name "*-main*.c" -o -name "*.h" \))
+}
+
+alias lintall="blackall && pystall"
