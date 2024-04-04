@@ -181,6 +181,7 @@ alias upgrade="sudo apt-get upgrade"
 alias updateupgrade="sudo apt update && sudo apt upgrade"
 alias water="~/programs/waterfox"
 alias bpy="bpython"
+alias readssh="cat ~/.ssh/id_rsa.pub"
 
 # cd aliases
 alias repos="cd ~/my-repos/"
