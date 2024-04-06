@@ -153,7 +153,7 @@ alias zedit="vim ~/.zshrc"
 # program aliases
 alias pyst="pycodestyle"
 alias pysc=",pyscript"
-alias py="python3"
+alias py="python3.12"
 alias pymod="python3 -m"
 alias pycode="python3 -c"
 alias flame="flameshot gui"
