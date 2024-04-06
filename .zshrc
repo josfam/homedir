@@ -144,7 +144,7 @@ alias debranchhere="git branch -d"
 alias debranchweb="git push -d origin"
 alias checkit="git checkout"
 alias streamit="git push --set-upstream origin"
-alias add.="git add . && git status"
+alias add="git add . && git status"
 
 # zshell aliases
 alias zload="source ~/.zshrc"
