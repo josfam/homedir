@@ -181,6 +181,7 @@ alias updateupgrade="sudo apt update && sudo apt upgrade"
 alias water="~/programs/waterfox"
 alias bpy="bpython"
 alias readssh="cat ~/.ssh/id_rsa.pub"
+alias addgitidentity="ssh-add ~/.ssh/id_ed25519"
 
 # cd aliases
 alias repos="cd ~/my-repos/"
@@ -230,3 +231,10 @@ bty() {
 }
 
 alias lintall="blackall && pystall"
+
+startsshagent() {
+	eval "$(ssh-agent -s)"
+}
+
+alias gitssh="startsshagent && addgitidentity"
+
