@@ -185,6 +185,7 @@ alias val="valgrind --leak-check=full --track-origins=yes"
 alias bpy="bpython"
 alias readssh="cat ~/.ssh/id_rsa.pub"
 alias addgitidentity="ssh-add ~/.ssh/id_ed25519"
+alias mkx="sudo chmod +x"
 
 # cd aliases
 alias repos="cd ~/my-repos/"
