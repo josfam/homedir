@@ -7,6 +7,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
+# ZSH_THEME="anon_custom"
+# ZSH_THEME="frontcube"
 ZSH_THEME="bira"
 
 # Set list of themes to pick from when loading at random
@@ -144,7 +146,7 @@ alias debranchhere="git branch -d"
 alias debranchweb="git push -d origin"
 alias checkit="git checkout"
 alias streamit="git push --set-upstream origin"
-alias add="git add . && git status"
+alias add.="git add . && git status"
 
 # zshell aliases
 alias zload="source ~/.zshrc"
@@ -153,7 +155,7 @@ alias zedit="vim ~/.zshrc"
 # program aliases
 alias pyst="pycodestyle"
 alias pysc=",pyscript"
-alias py="python3.12"
+alias py="python3"
 alias pymod="python3 -m"
 alias pycode="python3 -c"
 alias flame="flameshot gui"
@@ -197,7 +199,6 @@ alias sortingalgos="cd ~/my_repos/sorting_algorithms"
 alias testalmostcircle="python3 -m unittest discover tests"
 alias bnb="cd ~/my_repos/AirBnB_clone"
 alias testall="python3 -m unittest discover tests"
-alias histedit="vim ~/.zsh_history"
 alias w3val="$HOME/programs/W3C-Validator/w3c_validator.py"
 alias trees="cd $HOME/my-repos/binary_trees"
 
@@ -206,12 +207,12 @@ export PATH="$PATH:$HOME/other-repos/gifski/target/release"
 
 # ========== FUNCTIONS ==========
 # run black on all python files in the current location
-blackthem() {
+blackall() {
     black -S -l 79 $(find . -type f -name '*.py')
 }
 
 # pycodestyle
-pystthem() {
+pystall() {
 	pycodestyle --show-pep8 --show-source $(find . -name '*.py')
 }
 
@@ -239,3 +240,4 @@ startsshagent() {
 
 alias gitssh="startsshagent && addgitidentity"
 
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
