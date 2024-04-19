@@ -1,244 +1,172 @@
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+" Vim plugins
+call plug#begin()
+Plug 'ervandew/supertab'
+Plug 'preservim/nerdtree'
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'npm install'}
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'Yggdroot/indentLine'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'ryanoasis/vim-devicons'
+call plug#end()
 
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+set encoding=UTF-8
+:set backspace=indent,eol,start
 
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
-# ZSH_THEME="anon_custom"
-# ZSH_THEME="frontcube"
-ZSH_THEME="bira"
+" Start plugins automatically
+autocmd VimEnter * NERDTree
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+filetype plugin on
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+" for coc.nvim ==================================
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+" Use tab for trigger completion with characters ahead and navigate
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" ==============================================
 
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
+" For Fzf Vim plugin
+let g:fzf_preview_window = 'right:50%'
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6  }  }
+" ===============================================
 
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
+" Normal key remapping
+inoremap jj <esc>
+nnoremap tt <C-W>l " move to right of vertically split window
+nnoremap yy <C-W>h " move to left of vertically split window
+nnoremap >> <C-w>>
+nnoremap << <C-w><
+nnoremap qq :q<CR>
+nnoremap ww :w<CR>
+nnoremap mm <C-W>j " move to bottom of horizontally split windows
+nnoremap uu <C-W>k " move to the top of horizontally split windows
 
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+set number
 
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+" Line 80 coloring
+set colorcolumn=80
 
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+" Highlight cursor line underneath the cursor horizontally.
+set cursorline
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
+" Highlight cursor line underneath the cursor vertically.
+" set cursorcolumn
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+" Set shift width to 4 spaces.
+set shiftwidth=4
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+" Set tab width to 4 columns.
+set tabstop=4
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+" Indentation for C files (ALX Betty requirement).
+set smartindent
+set cindent
 
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+" Remove all trailing whitespace by pressing F5 (For ALX Betty)
+" Script got from Stack Overflow
+" https://vi.stackexchange.com/questions/454/whats-the-simplest-way-to-strip-trailing-whitespace-from-all-lines-in-a-file
+nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
-source $ZSH/oh-my-zsh.sh
+" Use space characters instead of tabs. (disabled due to ALX Betty rules)
+" set expandtab
 
-# User configuration
+" Do not save backup files.
+set nobackup
 
-# export MANPATH="/usr/local/man:$MANPATH"
+" Do not let cursor scroll below or above N number of lines when scrolling.
+set scrolloff=10
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+" Do not wrap lines. Allow long lines to extend as far as the line goes.
+set nowrap
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+" While searching though a file incrementally highlight matching characters as you type.
+set incsearch
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+" Ignore capital letters during search.
+set ignorecase
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+" Override the ignorecase option if searching for capital letters.
+" This will allow you to search specifically for capital letters.
+set smartcase
 
-########## CUSTOM ##########
+" Show the mode you are on the last line.
+set showmode
 
-# do not generate python bytecode
-export PYTHONDONTWRITEBYTECODE=PLEASE
+" Show matching words during a search.
+set showmatch
 
-# my_scripts
-export PATH="$PATH:$HOME/programs/my-scripts"
-export PATH="$PATH:$HOME/ALX/simple_shell/dev-scripts"
-export PATH="$PATH:$HOME/my-repos/automatons"
+" Use highlighting when doing a search.
+set hlsearch
 
-# .local/bin
-export PATH="$PATH:$HOME/.local/bin"
+" Set the commands to save in history default number is 20.
+set history=1000
 
-# programs
-export PATH="$PATH:$HOME/programs"
-export PATH="$PATH:$HOME/programs/waterfox"
+" Enable auto completion menu after pressing TAB.
+set wildmenu
 
-# git aliases
-alias pall="git add . && git commit && git push"
-alias padd="git commit && git push"
-alias rebase="git rebase -i"
-alias rebaselast="git rebase -i HEAD~1"
-alias stash="git stash"
-alias rebaselast2="git rebase -i HEAD~2"
-alias unstash="git stash pop"
-alias pull="git pull"
-alias push="git push"
-alias fetch="git fetch"
-alias st="git status"
-alias mainswitch="git checkout main"
-alias branches="git branch -a | cat"
-alias line="git log --oneline | less"
-alias log="git log"
-alias add="git add"
-alias clone="git clone"
-alias unstage="git restore --staged"
-alias cmt="git commit"
-alias branchit="git checkout -b"
-alias unadd="git restore --staged"
-alias reseth="git reset --hard"
-alias pushf="git push -f"
-alias debranchhere="git branch -d"
-alias debranchweb="git push -d origin"
-alias checkit="git checkout"
-alias streamit="git push --set-upstream origin"
-alias add.="git add . && git status"
+" Make wildmenu behave like similar to Bash completion.
+set wildmode=list:longest
 
-# zshell aliases
-alias zload="source ~/.zshrc"
-alias zedit="vim ~/.zshrc"
+" There are certain files that we would never want to edit with Vim.
+" Wildmenu will ignore files with these extensions.
+set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
-# program aliases
-alias pyst="pycodestyle"
-alias pysc=",pyscript"
-alias py="python3"
-alias pymod="python3 -m"
-alias pycode="python3 -c"
-alias flame="flameshot gui"
-alias cmp=",compile"
-alias list="ls -alh"
-alias v="vim"
-alias vpn="protonvpn-cli c"
-alias unvpn="protonvpn-cli d"
-alias sqlcheck="systemctl status"
-alias sqllogin="sudo mysql --auto-rehash -u root"
-alias sqlrestart="sudo systemctl restart mysql"
-alias sqlstop="sudo systemctl stop mysql"
-alias sqlstart="sudo systemctl start mysql"
-alias ch="touch"
-alias vimedit="vim ~/.vimrc"
-alias kl="sudo kill"
-alias cl="clear"
-alias fontreset="fc-cache -vf"
-alias k="clear"
-alias out="./a.out"
-alias sd="sudo"
-alias update="sudo apt update"
-alias upgrade="sudo apt-get upgrade"
-alias updateupgrade="sudo apt update && sudo apt upgrade"
-alias water="~/programs/waterfox"
-alias val="valgrind --leak-check=full --track-origins=yes"
-alias bpy="bpython"
-alias readssh="cat ~/.ssh/id_rsa.pub"
-alias addgitidentity="ssh-add ~/.ssh/id_ed25519"
-alias mkx="sudo chmod +x"
+" Remap CTRL+SHIFT+h to :split
+nnoremap <C-S-h> :split<CR>
 
-# cd aliases
-alias repos="cd ~/my-repos/"
-alias zshthemes="cd $HOME/.oh-my-zsh/themes"
-alias home="cd ~"
-alias chinazasessions="cd $HOME/my-repos/chinaza-sessions"
+" Remap CTRL+SHIFT+i to :vsplit
+nnoremap <C-S-i> :vsplit<CR>
 
-# ALX program aliases
-alias chinazashell="cd ~/my_repos/chinaza-sessions/simple_shell/"
-alias almostcircle="cd ~/my_repos/alx-higher_level_programming/0x0C-python-almost_a_circle"
-alias sortingalgos="cd ~/my_repos/sorting_algorithms"
-alias testalmostcircle="python3 -m unittest discover tests"
-alias bnb="cd ~/my_repos/AirBnB_clone"
-alias testall="python3 -m unittest discover tests"
-alias w3val="$HOME/programs/W3C-Validator/w3c_validator.py"
-alias trees="cd $HOME/my-repos/binary_trees"
+" Remap CTRL+SHIFT+l to :split
+nnoremap <C-s-l> :split<CR>
 
-# Other people's github programs
-export PATH="$PATH:$HOME/other-repos/gifski/target/release"
+" PLUGINS ---------------------------------------------------------------- {{{
 
-# ========== FUNCTIONS ==========
-# run black on all python files in the current location
-blackall() {
-    black -S -l 79 $(find . -type f -name '*.py')
-}
+" Plugin code goes here.
 
-# pycodestyle
-pystall() {
-	pycodestyle --show-pep8 --show-source $(find . -name '*.py')
-}
+" }}}
 
-# make all python files executable
-mkexecallpy() {
-	sudo chmod +x $(find . -type f -name "*.py")
-}
 
-# validate all html and css files with Holberton's W3C-Validator
-w3all() {
-	w3val $(find . -type f \( -name "*.html" -o -name "*.css" \))
-}
+" MAPPINGS --------------------------------------------------------------- {{{
 
-# Run betty on all c files and header files in the directory, except c files with
-# the naming convention, *-main.c
-bty() {
-	betty $(find . -type f \( -name "*.c" ! -name "*-main*.c" -o -name "*.h" \))
-}
+" Mappings code goes here.
 
-alias lintall="blackall && pystall"
+" }}}
 
-startsshagent() {
-	eval "$(ssh-agent -s)"
-}
 
-alias gitssh="startsshagent && addgitidentity"
+" VIMSCRIPT -------------------------------------------------------------- {{{
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+" This will enable code folding.
+" Use the marker method of folding.
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
+
+" More Vimscripts code goes here.
+
+" }}}
+
+
+" STATUS LINE ------------------------------------------------------------ {{{
+
+" Status bar code goes here.
+
+" }}}
