@@ -2,9 +2,62 @@
 call plug#begin()
 Plug 'ervandew/supertab'
 Plug 'preservim/nerdtree'
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': 'npm install'}
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'Yggdroot/indentLine'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
-" Line numbers "
+set encoding=UTF-8
+:set backspace=indent,eol,start
+
+" Start plugins automatically
+autocmd VimEnter * NERDTree
+
+filetype plugin on
+
+" for coc.nvim ==================================
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use tab for trigger completion with characters ahead and navigate
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" ==============================================
+
+" For Fzf Vim plugin
+let g:fzf_preview_window = 'right:50%'
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6  }  }
+" ===============================================
+
+" Normal key remapping
+inoremap jj <esc>
+nnoremap tt <C-W>l " move to right of vertically split window
+nnoremap yy <C-W>h " move to left of vertically split window
+nnoremap >> <C-w>>
+nnoremap << <C-w><
+nnoremap qq :q<CR>
+nnoremap ww :w<CR>
+nnoremap mm <C-W>j " move to bottom of horizontally split windows
+nnoremap uu <C-W>k " move to the top of horizontally split windows
+
 set number
 
 " Line 80 coloring
@@ -75,9 +128,6 @@ set wildmode=list:longest
 " Wildmenu will ignore files with these extensions.
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
-" Key remapping
-inoremap jj <esc>
-
 " Remap CTRL+SHIFT+h to :split
 nnoremap <C-S-h> :split<CR>
 
@@ -120,5 +170,3 @@ augroup END
 " Status bar code goes here.
 
 " }}}
-
-
