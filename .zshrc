@@ -61,9 +61,7 @@ ZSH_THEME="bira"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
+# HIST_STAMPS="mm/dd/yyyy" # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load?
@@ -161,8 +159,11 @@ alias zedit="vim ~/.zshrc"
 alias blackthis='black -S -l 79'
 alias pyst="pycodestyle"
 alias pysc=",pyscript"
-alias py="python3"
+alias py312="python3.12"
+alias py311="python3.11"
 alias py38="python3.8"
+alias python3="py38" # default python3 to use (will change depending)
+alias py="python3"
 alias pymod="python3 -m"
 alias pycode="python3 -c"
 alias flame="flameshot gui"
@@ -193,7 +194,9 @@ alias bpy="bpython"
 alias readssh="cat ~/.ssh/id_rsa.pub"
 alias addgitidentity="ssh-add ~/.ssh/id_ed25519"
 alias mkx="sudo chmod +x"
-alias startvagrant="cd ~/vagrant-machines/ubuntu20-04-focal && vagrant up && vagrant ssh"
+alias vagrantalx="cd ~/vagrant-machines/alx-ubuntu-20.04 && vagrant up && vagrant ssh"
+alias xt="exit"
+alias vg="vagrant"
 
 # cd aliases
 alias repos="cd ~/my-repos/"
@@ -263,3 +266,4 @@ registerGitSSHIdentity() {
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 registerGitSSHIdentity
+
