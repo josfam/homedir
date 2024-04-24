@@ -19,7 +19,13 @@ autocmd VimEnter * NERDTree
 
 filetype plugin on
 
+" for indentLine
+let g:indentLine_char = '┊'
+
 " for coc.nvim ==================================
+" Symbol renaming
+nmap <leader>rn <Plug>(coc-rename)
+
 function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
@@ -46,6 +52,9 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
 let g:fzf_preview_window = 'right:50%'
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6  }  }
 " ===============================================
+
+" open terminal below all splits
+cabbrev bterm bo term
 
 " Normal key remapping
 inoremap jj <esc>
@@ -170,3 +179,4 @@ augroup END
 " Status bar code goes here.
 
 " }}}
+
