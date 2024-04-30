@@ -15,7 +15,7 @@ set encoding=UTF-8
 :set backspace=indent,eol,start
 
 " Start plugins automatically
-autocmd VimEnter * NERDTree
+" autocmd VimEnter * NERDTree
 
 filetype plugin on
 
@@ -55,6 +55,7 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6  }  }
 
 " open terminal below all splits
 cabbrev bterm bo term
+nnoremap tt :bterm
 
 " Normal key remapping
 inoremap jj <esc>
@@ -64,8 +65,13 @@ nnoremap >> <C-w>>
 nnoremap << <C-w><
 nnoremap qq :q<CR>
 nnoremap ww :w<CR>
-nnoremap mm <C-W>j " move to bottom of horizontally split windows
-nnoremap uu <C-W>k " move to the top of horizontally split windows
+" move to bottom of horizontally split windows
+nnoremap mm <C-W>j 
+" move to the top of horizontally split windows
+nnoremap uu <C-W>k
+" open terminal at the bottom of all splits
+nnoremap <C-t> :bterm
+command! Tr :NERDTree
 
 set number
 
@@ -179,4 +185,3 @@ augroup END
 " Status bar code goes here.
 
 " }}}
-
