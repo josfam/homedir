@@ -120,8 +120,6 @@ export PATH="$PATH:$HOME/programs"
 export PATH="$PATH:$HOME/programs/waterfox"
 
 # git aliases
-alias pall="git add . && git commit && git push"
-alias padd="git commit && git push"
 alias rebase="git rebase -i"
 alias rebaselast="git rebase -i HEAD~1"
 alias stash="git stash"
@@ -266,8 +264,7 @@ registerGitSSHIdentity() {
         # Do nothing
     fi
 }
+alias pall="registerGitSSHIdentity && git add . && git commit && git push"
+alias padd="registerGitSSHIdentity && git commit && git push"
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-registerGitSSHIdentity
-
