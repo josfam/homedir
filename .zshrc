@@ -112,6 +112,9 @@ export PATH="$PATH:$HOME/my-repos/automatons"
 # .local/bin
 export PATH="$PATH:$HOME/.local/bin"
 
+# sbin
+export PATH="$PATH:/usr/sbin/"
+
 # programs
 export PATH="$PATH:$HOME/programs"
 export PATH="$PATH:$HOME/programs/waterfox"
@@ -162,9 +165,11 @@ alias pysc=",pyscript"
 alias py312="python3.12"
 alias py311="python3.11"
 alias py38="python3.8"
-alias python3="py38" # default python3 to use (will change depending)
+alias python3="py312" # default python3 to use (will change depending)
 alias py="python3"
 alias pymod="python3 -m"
+alias pip="pymod pip"
+alias pip3="pip"
 alias pycode="python3 -c"
 alias flame="flameshot gui"
 alias cmp=",compile"
@@ -253,9 +258,8 @@ startsshagent() {
 alias gitssh="startsshagent && addgitidentity"
 
 registerGitSSHIdentity() {
-    # Check if the current directory is a Git repository
-    if [ -d ".git" ]; then
-        # If it is, execute the gitssh command
+    # Register identity if the current location is inside a git repo
+    if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
         gitssh
 		echo "Git identity added. Keys can now be signed with SSH"
     else
