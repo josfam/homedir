@@ -139,7 +139,7 @@ alias cmt="git commit"
 alias branchout="git checkout -b"
 alias unadd="git restore --staged"
 alias reseth="git reset --hard"
-alias pushf="git push -f"
+alias pushf="git push --force-with-lease"
 alias debranchhere="git branch -d"
 alias debranchweb="git push -d origin"
 alias branchclean="git fetch --prune"
@@ -234,7 +234,7 @@ pystall() {
 }
 
 # make all python files executable
-mkexecallpy() {
+mkxallpy() {
 	sudo chmod +x $(find . -type f -name "*.py")
 }
 
