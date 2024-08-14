@@ -286,7 +286,21 @@ registerGitSSHIdentity() {
     fi
 }
 alias pall="registerGitSSHIdentity && git add . && git commit && git push"
-alias padd="registerGitSSHIdentity && git commit && git push"
+
+# adds a file, commit it then push it
+padd() {
+	registerGitSSHIdentity
+	if [ $# -gt 1 ]; then
+		echo "usages:"
+		echo "padd"
+		echo "padd <filename>"
+	elif [ $# -eq 1 ]; then
+		git add $1
+		git commit && git push
+	else
+		git commit && git push
+	fi
+}
 
 # load vagrant machines
 usevagrant() {
