@@ -223,6 +223,25 @@ alias trees="cd $HOME/my-repos/binary_trees"
 export PATH="$PATH:$HOME/other-repos/gifski/target/release"
 
 # ========== FUNCTIONS ==========
+# run the provided mysql file in the provided mysql database, as the mysql user
+# `root`. Runs the mysql file generally if no db is provided (useful for
+# creating and droping dbs
+runsql() {
+	if [ $# -gt 2 ]; then
+		echo "Please provide the correct number of arguments"
+		echo "usages:"
+		echo "runsql <sql file> <target db>"
+		echo "runsql <sql file>"
+		return
+	fi
+	if [ $# -eq 1 ]; then
+		# execute across the general mysql (not db specific)
+		cat $1 | mysql -uroot
+		return
+	fi
+	cat $1 | mysql -uroot $2
+}
+
 # run black on all python files in the current location
 blackall() {
     black -S -l 79 $(find . -type f -name '*.py')
@@ -234,7 +253,7 @@ pystall() {
 }
 
 # make all python files executable
-mkxallpy() {
+mkxpy() {
 	sudo chmod +x $(find . -type f -name "*.py")
 }
 
@@ -268,5 +287,13 @@ registerGitSSHIdentity() {
 }
 alias pall="registerGitSSHIdentity && git add . && git commit && git push"
 alias padd="registerGitSSHIdentity && git commit && git push"
+
+# load vagrant machines
+usevagrant() {
+	cd ~/vagrant-machines
+	cd ubuntu2004focal/
+	vagrant up
+	vagrant ssh
+}
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
