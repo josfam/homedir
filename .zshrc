@@ -202,6 +202,7 @@ alias mkx="sudo chmod +x"
 alias vagrantalx="cd ~/vagrant-machines/alx-ubuntu-20.04 && vagrant up && vagrant ssh"
 alias xt="exit"
 alias vg="vagrant"
+alias docker="sudo docker"
 
 # cd aliases
 alias repos="cd ~/my-repos/"
