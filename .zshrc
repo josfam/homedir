@@ -300,4 +300,3 @@ usevagrant() {
 	vagrant ssh
 }
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
