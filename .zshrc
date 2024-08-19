@@ -208,17 +208,6 @@ alias docker="sudo docker"
 alias repos="cd ~/my-repos/"
 alias zshthemes="cd $HOME/.oh-my-zsh/themes"
 alias home="cd ~"
-alias chinazasessions="cd $HOME/my-repos/chinaza-sessions"
-
-# ALX program aliases
-alias chinazashell="cd ~/my_repos/chinaza-sessions/simple_shell/"
-alias almostcircle="cd ~/my_repos/alx-higher_level_programming/0x0C-python-almost_a_circle"
-alias sortingalgos="cd ~/my_repos/sorting_algorithms"
-alias testalmostcircle="python3 -m unittest discover tests"
-alias bnb="cd ~/my_repos/AirBnB_clone"
-alias testall="python3 -m unittest discover tests"
-alias w3val="$HOME/programs/W3C-Validator/w3c_validator.py"
-alias trees="cd $HOME/my-repos/binary_trees"
 
 # Other people's github programs
 export PATH="$PATH:$HOME/other-repos/gifski/target/release"
