@@ -135,7 +135,8 @@ alias log="git log"
 alias add="git add"
 alias clone="git clone"
 alias unstage="git restore --staged"
-alias cmt="git commit"
+alias cm="git commit"
+alias cmall="git add . && git commit"
 alias branchout="git checkout -b"
 alias unadd="git restore --staged"
 alias reseth="git reset --hard"
@@ -165,7 +166,7 @@ alias py38="python3.8"
 alias py310="python3.10"
 alias py311="python3.11"
 alias py312="python3.12"
-alias python3="py38" # default python3 to use (will change depending)
+alias python3="py312" # default python3 to use (will change depending)
 alias py="python3"
 alias pymod="python3 -m"
 alias pip="pymod pip"
@@ -203,7 +204,7 @@ alias vagrantalx="cd ~/vagrant-machines/alx-ubuntu-20.04 && vagrant up && vagran
 alias xt="exit"
 alias vg="vagrant"
 alias docker="sudo docker"
-
+alias pgsql="postgresql"
 # cd aliases
 alias repos="cd ~/my-repos/"
 alias zshthemes="cd $HOME/.oh-my-zsh/themes"
@@ -299,4 +300,41 @@ usevagrant() {
 	vagrant up
 	vagrant ssh
 }
+
+start() {
+	if [ $# -ne 1 ]; then
+		echo "usage: start <program name>"
+		return
+	fi
+	sudo systemctl start $1
+}
+
+stop() {
+	if [ $# -ne 1 ]; then
+		echo "usage: stop <program name>"
+		return
+	fi
+	sudo systemctl stop $1
+}
+
+restart() {
+	if [ $# -ne 1 ]; then
+		echo "usage: restart <program name>"
+		return
+	fi
+	sudo systemctl restart $1
+}
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# look for an .nvmrc file and load in that node version automatically
+if [ -f .nvmrc ]; then
+	nvm use
+fi
+
+# waterfox
+export LD_LIBRARY_PATH=/home/caitlyn/programs/waterfox
 
