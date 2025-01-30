@@ -167,7 +167,6 @@ alias py38="python3.8"
 alias py310="python3.10"
 alias py311="python3.11"
 alias py312="python3.12"
-alias python3="py312" # default python3 to use (will change depending)
 alias python="python3"
 alias py="python3"
 alias pymod="python3 -m"
@@ -218,7 +217,6 @@ export PATH="$PATH:$HOME/other-repos/gifski/target/release"
 # ========== FUNCTIONS ==========
 # run the provided mysql file in the provided mysql database, as the mysql user
 # `root`. Runs the mysql file generally if no db is provided (useful for
-# creating and droping dbs
 runsql() {
 	if [ $# -gt 2 ]; then
 		echo "Please provide the correct number of arguments"
@@ -339,4 +337,10 @@ fi
 
 # waterfox
 export LD_LIBRARY_PATH=/home/caitlyn/programs/waterfox
+
+# cuda
+export PATH=/usr/local/cuda/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+export PATH=/usr/local/cuda-12.6/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64:$LD_LIBRARY_PATH
 
