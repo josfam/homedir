@@ -142,13 +142,14 @@ alias branchout="git checkout -b"
 alias unadd="git restore --staged"
 alias reseth="git reset --hard"
 alias pushf="git push --force-with-lease"
-alias debranchhere="git branch -d"
-alias debranchweb="git push -d origin"
+alias branchcut="git branch -d"
+alias branchcutweb="git push -d origin"
 alias branchclean="git fetch --prune"
 alias checkout="git checkout"
 alias upstream="git push --set-upstream origin"
 alias add.="git add . && git status"
 alias stashall="git stash --all"
+
 # switch to main branch , or master branch
 mainswitch() {
 	git checkout main 2> /dev/null || git checkout master;
