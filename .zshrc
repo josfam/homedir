@@ -210,6 +210,7 @@ alias pgsql="postgresql"
 alias repos="cd ~/my-repos/"
 alias zshthemes="cd $HOME/.oh-my-zsh/themes"
 alias home="cd ~"
+alias ctl="sudo systemctl"
 
 # Other people's github programs
 export PATH="$PATH:$HOME/other-repos/gifski/target/release"
