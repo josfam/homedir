@@ -235,6 +235,11 @@ runsql() {
 	cat $1 | mysql -uroot $2
 }
 
+# source into a virtualenv
+vnv() {
+	eval "$(venvit "$@")"
+}
+
 # run black on all python files in the current location
 blackall() {
     black -S -l 79 $(find . -type f -name '*.py')
