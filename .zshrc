@@ -236,7 +236,7 @@ runsql() {
 }
 
 # source into a virtualenv
-vnv() {
+vn() {
 	eval "$(venvit "$@")"
 }
 
