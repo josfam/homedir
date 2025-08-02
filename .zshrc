@@ -207,11 +207,12 @@ alias xt="exit"
 alias vg="vagrant"
 alias docker="sudo docker"
 alias pgsql="postgresql"
-# cd aliases
 alias repos="cd ~/my-repos/"
 alias zshthemes="cd $HOME/.oh-my-zsh/themes"
 alias home="cd ~"
 alias ctl="sudo systemctl"
+alias flameshot="flameshot gui"
+alias deac="deactivate" # for virtual envs
 
 # Other people's github programs
 export PATH="$PATH:$HOME/other-repos/gifski/target/release"
