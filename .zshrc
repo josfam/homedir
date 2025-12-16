@@ -133,7 +133,6 @@ alias branches="git branch -a | cat"
 alias line="git log --oneline | less"
 alias log="git log"
 alias add="git add"
-alias clone="git clone"
 alias unstage="git restore --staged"
 alias cm="git commit"
 alias switch="git switch"
@@ -150,6 +149,7 @@ alias upstream="git push --set-upstream origin"
 alias add.="git add . && git status"
 alias stashall="git stash --all"
 alias commit="git commit"
+alias rm="trash-put"
 
 # switch to main branch , or master branch
 mainswitch() {
@@ -193,9 +193,7 @@ alias fontreset="fc-cache -vf"
 alias k="clear"
 alias out="./a.out"
 alias sd="sudo"
-alias update="sudo apt update"
-alias upgrade="sudo apt-get upgrade"
-alias updateupgrade="sudo apt update && sudo apt upgrade"
+alias upgrade="sudo apt update -y && sudo apt upgrade -y"
 alias water="~/programs/waterfox"
 alias val="valgrind --leak-check=full --track-origins=yes"
 alias bpy="bpython"
@@ -220,6 +218,10 @@ export PATH="$PATH:$HOME/other-repos/gifski/target/release"
 # ========== FUNCTIONS ==========
 # run the provided mysql file in the provided mysql database, as the mysql user
 # `root`. Runs the mysql file generally if no db is provided (useful for
+clone() {
+	git clone "$1" && cd "$(basename "$1" .git)"
+}
+
 runsql() {
 	if [ $# -gt 2 ]; then
 		echo "Please provide the correct number of arguments"
