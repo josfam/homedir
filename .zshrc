@@ -367,6 +367,11 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+# nvm for node installation
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 ## >>> conda initialize >>>
 ## !! Contents within this block are managed by 'conda init' !!
 #__conda_setup="$('/home/casey/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -381,11 +386,3 @@ esac
 #fi
 #unset __conda_setup
 # <<< conda initialize <<<
-
-# For Pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
-## load pyenv-virtualenv automatically
-eval "$(pyenv virtualenv-init -)"
-
