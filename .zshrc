@@ -211,7 +211,7 @@ alias home="cd ~"
 alias ctl="sudo systemctl"
 alias flameshot="flameshot gui"
 alias deac="deactivate" # for virtual envs
-
+alias pgadmin="/usr/pgadmin4/bin/pgadmin4"
 # Other people's github programs
 export PATH="$PATH:$HOME/other-repos/gifski/target/release"
 
